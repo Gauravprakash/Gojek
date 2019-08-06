@@ -1,0 +1,20 @@
+/* 
+  AppStrings.strings
+  Delivery
+
+  Created by Hemant Singh on 26/07/19.
+  Copyright © 2019 Hemant Singh. All rights reserved.
+*/
+
+"Warning" = "Warning";
+"Some Error Occured. Please Try Again." = "Some Error Occured. Please Try Again.";
+"Retry" = "Retry";
+"Things To Deliver" = "Things To Deliver";
+"Delivery Details" = "Delivery Details";
+"No Internet Connection Available. Please Try Again." = "No Internet Connection Available. Please Try Again.";
+"at" = "at";
+"Cancel" = "Cancel";
+"Loading" = "Loading";
+"Ok" = "Ok";
+"No Data Found." = "No Data Found.";
+"Pull to Refresh" = "Pull to Refresh";
