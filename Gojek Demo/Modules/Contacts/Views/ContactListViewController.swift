@@ -10,12 +10,13 @@ import UIKit
 import Toast_Swift
 import DZNEmptyDataSet
 
-enum Route: String {
-    case deliveryDetails
-}
 
 class ContactListViewController: UIViewController {
- 
+    
+    enum Route: String {
+        case contactDetails
+    }
+    
     lazy var contactTableView: UITableView = {
         let table = UITableView(frame: self.view.frame, style: .plain)
         table.estimatedRowHeight = 100
@@ -30,12 +31,20 @@ class ContactListViewController: UIViewController {
     }()
     
     var viewModel = ContactListViewModel()
-    //var router = DeliveryListRouter()
+    var router = ContactListRouter()
     
     override func loadView() {
         super.loadView()
-        view.backgroundColor = .white
+        let groupItem = UIBarButtonItem(title: "Groups", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: nil)
+        [groupItem, addItem].forEach {(
+            $0.tintColor = Color.buttonColor
+        )}
+        self.navigationItem.rightBarButtonItem = addItem
+        self.navigationItem.leftBarButtonItem = groupItem
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +74,12 @@ class ContactListViewController: UIViewController {
 }
 
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.contactDictionary.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.contactArray.count
+        return viewModel.contactDictionary[viewModel.keys[section]]?.count ?? 0
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,13 +91,26 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let contact = viewModel.contactArray?[safe: indexPath.row] {
-            (cell as? ContactCell)?.bind(with: contact)
+        let key = viewModel.keys[indexPath.section]
+        if let contact = viewModel.contactDictionary[key]?[indexPath.row] {
+           (cell as? ContactCell)?.bind(with: contact)
         }
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { //You can use viewForHeaderInSection either.
+        return viewModel.keys[section]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //router.route(to: Route.deliveryDetails.rawValue, from: self, parameters: viewModel.deliveryArray[safe: indexPath.row])
+        if let contact = viewModel.contactDictionary[viewModel.keys[indexPath.section]]?[indexPath.row], let id = contact.id{
+            viewModel.loadContactDetail(id: id) { (contact) in
+                self.router.route(to: Route.contactDetails.rawValue, from: self, parameters: contact)
+            }
+            
+        }
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return viewModel.alphabets
     }
     
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {

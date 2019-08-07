@@ -15,7 +15,10 @@ struct Contact: Codable {
     let firstName, lastName: String?
     let profilePic: String?
     let favorite: Bool?
+    let phoneNumber:String?
+    let emailId:String?
     let url: String?
+    
     
     enum CodingKeys: String, CodingKey {
             case id = "id"
@@ -23,17 +26,11 @@ struct Contact: Codable {
             case lastName = "last_name"
             case profilePic = "profile_pic"
             case favorite = "favorite"
+            case phoneNumber = "phone_number"
+            case emailId = "email"
             case url = "url"
     }
  
-    init(id: Int, firstName: String, lastName: String, profilePic: String, favorite: Bool, url: String) {
-        self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.profilePic = profilePic
-        self.favorite = favorite
-        self.url = url
-    }
 }
 
 

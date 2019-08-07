@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView" customModule="Gojek_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="830" height="420"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vye-Qx-kYF">
+                    <rect key="frame" x="315" y="64" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="CAE-j4-f59"/>
+                        <constraint firstAttribute="height" constant="200" id="Dea-zu-m5S"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Polly Richardson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9T-Al-BiU">
+                    <rect key="frame" x="351.5" y="284" width="127" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="daw-Lw-zvI">
+                    <rect key="frame" x="30" y="324.5" width="770" height="50"/>
+                    <subviews>
+                        <button opaque="NO" tag="97" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xeo-r3-IMu">
+                            <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
+                            <state key="normal" image="message"/>
+                            <connections>
+                                <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="osw-sy-rGs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="98" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-9v-rRV">
+                            <rect key="frame" x="211" y="0.0" width="137" height="50"/>
+                            <state key="normal" image="call"/>
+                            <connections>
+                                <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="FRf-BJ-gdy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-3g-Z43">
+                            <rect key="frame" x="422" y="0.0" width="137" height="50"/>
+                            <state key="normal" title="Button" image="email"/>
+                            <connections>
+                                <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="gr6-RW-nUx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXl-b4-vPQ">
+                            <rect key="frame" x="633" y="0.0" width="137" height="50"/>
+                            <state key="normal" title="Button" image="favourite"/>
+                            <state key="selected" image="favourite_selected"/>
+                            <connections>
+                                <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="Enw-hU-y1b"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="v0Z-V9-kGv"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vye-Qx-kYF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="5ci-HF-7RG"/>
+                <constraint firstItem="X9T-Al-BiU" firstAttribute="top" secondItem="vye-Qx-kYF" secondAttribute="bottom" constant="20" id="6zo-OK-1Sh"/>
+                <constraint firstItem="daw-Lw-zvI" firstAttribute="top" secondItem="X9T-Al-BiU" secondAttribute="bottom" constant="20" id="AGU-SB-l2N"/>
+                <constraint firstItem="daw-Lw-zvI" firstAttribute="centerX" secondItem="X9T-Al-BiU" secondAttribute="centerX" id="KGS-kQ-LYR"/>
+                <constraint firstItem="X9T-Al-BiU" firstAttribute="centerX" secondItem="vye-Qx-kYF" secondAttribute="centerX" id="bg8-fb-vGO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="daw-Lw-zvI" secondAttribute="trailing" constant="30" id="c8C-5B-FUu"/>
+                <constraint firstItem="vye-Qx-kYF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="eKx-IV-ZO8"/>
+                <constraint firstItem="daw-Lw-zvI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="s8l-uX-YGr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imgView" destination="vye-Qx-kYF" id="JeO-hC-il8"/>
+                <outlet property="userName" destination="X9T-Al-BiU" id="Nse-bo-R73"/>
+            </connections>
+            <point key="canvasLocation" x="-312" y="-133"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="call" width="45" height="44"/>
+        <image name="email" width="45" height="44"/>
+        <image name="favourite" width="44" height="44"/>
+        <image name="favourite_selected" width="44" height="44"/>
+        <image name="message" width="44" height="44"/>
+    </resources>
+</document>

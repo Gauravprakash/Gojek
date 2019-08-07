@@ -29,17 +29,27 @@ class ContactCell: UITableViewCell {
         let imgView = UIImageView()
         imgView.kf.indicatorType = IndicatorType.activity
         imgView.contentMode = .scaleAspectFill
-        imgView.clipsToBounds = true
         return imgView
     }()
     
+    private let favImageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.kf.indicatorType = IndicatorType.activity
+        imgView.contentMode = .scaleAspectFill
+        imgView.image = UIImage(named: "home_favourite")
+        return imgView
+    }()
+
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         self.addSubview(nameLabel)
         self.addSubview(nameImageView)
+        self.addSubview(favImageView)
         nameImageView.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(cellHeight - CGFloat(2 * margin))
-            make.height.equalTo(cellHeight - CGFloat(2 * margin))
+            make.width.equalTo(cellHeight - CGFloat(2 * 30))
+            make.height.equalTo(cellHeight - CGFloat(2 * 30))
             make.top.equalTo(self).offset(margin)
             make.left.equalTo(self).offset(margin)
             make.bottom.equalTo(self).offset(-margin)
@@ -50,18 +60,26 @@ class ContactCell: UITableViewCell {
             make.right.equalTo(self).offset(-margin)
             make.height.equalTo(60)
         }
-    }
+        favImageView.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+            make.centerY.equalTo(self)
+            make.right.equalTo(self).offset(-30)
+        }
+   }
     
     func bind(with contact: Contact) {
         if let fname = contact.firstName, let lname = contact.lastName{
             nameLabel.text = "\(fname) \(lname)"
         }
-        if let urlString = contact.url, let imageUrl = URL(string: urlString) {
+        
+        if let urlString = contact.profilePic, let imageUrl = URL(string: Theme.baseUrl + urlString) {
             nameImageView.kf.setImage(with: imageUrl)
         }
         else{
             nameImageView.image = UIImage()
         }
+        favImageView.isHidden = !(contact.favorite ?? false)
     }
     
     required init?(coder aDecoder: NSCoder) {
