@@ -31,9 +31,12 @@ public func fetchContacts() {
 
                 } catch {
                 self?.onError?(error) }
+        
         case .failure(let error):
             self?.onError?(error)
         }
     }
 }
 }
+
+

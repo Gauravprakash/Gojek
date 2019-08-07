@@ -52,7 +52,7 @@ class ContactCell: UITableViewCell {
         }
     }
     
-    func bind(with contact: ContactListing) {
+    func bind(with contact: Contact) {
         if let fname = contact.firstName, let lname = contact.lastName{
             nameLabel.text = "\(fname) \(lname)"
         }
