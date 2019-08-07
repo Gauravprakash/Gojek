@@ -32,6 +32,11 @@ class ContactListViewController: UIViewController {
     var viewModel = ContactListViewModel()
     //var router = DeliveryListRouter()
     
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Contacts Found"
@@ -48,14 +53,7 @@ class ContactListViewController: UIViewController {
         }
     }
     
-    override func loadView() {
-        super.loadView()
-        view.backgroundColor = .white
-      }
-    
-
-    
-        func setupBindings(){
+ func setupBindings(){
             viewModel.onError = { [weak self] (error) in
                 self?.view.makeToast(error.localizedDescription)
             }
