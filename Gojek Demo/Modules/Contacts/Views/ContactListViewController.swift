@@ -15,11 +15,8 @@ enum Route: String {
 }
 
 class ContactListViewController: UIViewController {
-
-    let tableView  = UITableView()
-    var safeArea:UILayoutGuide!
  
-    lazy var deliveryTableView: UITableView = {
+    lazy var contactTableView: UITableView = {
         let table = UITableView(frame: self.view.frame, style: .plain)
         table.estimatedRowHeight = 100
         table.dataSource = self
@@ -38,13 +35,13 @@ class ContactListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Contacts Found"
-//
-//       self.view.addSubview(deliveryTableView)
-//        deliveryTableView.snp.makeConstraints { (make) -> Void in
-//            make.width.equalTo(self.view)
-//            make.height.equalTo(self.view)
-//            make.center.equalTo(self.view)
-//        }
+
+       self.view.addSubview(contactTableView)
+        contactTableView.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view)
+            make.center.equalTo(self.view)
+        }
         setupBindings()
         if viewModel.contactArray.count == 0 {
             viewModel.fetchContacts()
@@ -54,31 +51,16 @@ class ContactListViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
-        setUpTableView()
- 
-    }
+      }
     
-    func setUpTableView(){
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.estimatedRowHeight = 100
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(ContactCell.self, forCellReuseIdentifier: ContactCell.reuseIdentifier)
-    }
+
     
         func setupBindings(){
             viewModel.onError = { [weak self] (error) in
                 self?.view.makeToast(error.localizedDescription)
             }
             viewModel.onData = {[weak self] _ in
-                self?.tableView.reloadData()
+                self?.contactTableView.reloadData()
             }
         }
     
