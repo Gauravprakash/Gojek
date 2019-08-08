@@ -1,9 +1,9 @@
 //
 //  GradientView.swift
-//  Travolution
+
 //
-//  Created by Hemant Singh on 17/05/18.
-//  Copyright © 2018 Zillious Solutions. All rights reserved.
+//  Created by Gaurav Prakash on 07/08/19.
+//  Copyright © 2019 Gaurav. All rights reserved.
 //
 
 import UIKit

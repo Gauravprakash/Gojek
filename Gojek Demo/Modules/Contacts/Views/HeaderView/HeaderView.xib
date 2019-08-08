@@ -30,31 +30,31 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="74" translatesAutoresizingMaskIntoConstraints="NO" id="daw-Lw-zvI">
-                            <rect key="frame" x="20" y="280.5" width="790" height="44"/>
+                            <rect key="frame" x="20" y="280.5" width="790" height="50"/>
                             <subviews>
                                 <button opaque="NO" tag="97" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xeo-r3-IMu">
-                                    <rect key="frame" x="0.0" y="0.0" width="142" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="142" height="50"/>
                                     <state key="normal" image="message"/>
                                     <connections>
                                         <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="osw-sy-rGs"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="98" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-9v-rRV">
-                                    <rect key="frame" x="216" y="0.0" width="142" height="44"/>
+                                    <rect key="frame" x="216" y="0.0" width="142" height="50"/>
                                     <state key="normal" image="call"/>
                                     <connections>
                                         <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="FRf-BJ-gdy"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5a-3g-Z43">
-                                    <rect key="frame" x="432" y="0.0" width="142" height="44"/>
+                                    <rect key="frame" x="432" y="0.0" width="142" height="50"/>
                                     <state key="normal" image="email"/>
                                     <connections>
                                         <action selector="sendActions:" destination="iN0-l3-epB" eventType="touchUpInside" id="gr6-RW-nUx"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uXl-b4-vPQ">
-                                    <rect key="frame" x="648" y="0.0" width="142" height="44"/>
+                                    <rect key="frame" x="648" y="0.0" width="142" height="50"/>
                                     <state key="normal" image="favourite"/>
                                     <state key="selected" image="favourite_selected"/>
                                     <connections>
@@ -63,20 +63,20 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="v0Z-V9-kGv"/>
+                                <constraint firstAttribute="height" constant="50" id="v0Z-V9-kGv"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="X9T-Al-BiU" firstAttribute="centerX" secondItem="vye-Qx-kYF" secondAttribute="centerX" id="BpF-Ag-XWe"/>
-                        <constraint firstAttribute="trailing" secondItem="daw-Lw-zvI" secondAttribute="trailing" constant="20" id="ErD-eK-qgD"/>
+                        <constraint firstItem="daw-Lw-zvI" firstAttribute="centerX" secondItem="HPf-yX-E5h" secondAttribute="centerX" id="Epb-we-OuK"/>
                         <constraint firstItem="vye-Qx-kYF" firstAttribute="centerX" secondItem="HPf-yX-E5h" secondAttribute="centerX" id="MYL-X6-Zao"/>
-                        <constraint firstItem="daw-Lw-zvI" firstAttribute="leading" secondItem="HPf-yX-E5h" secondAttribute="leading" constant="20" id="PVl-Ui-bkd"/>
+                        <constraint firstAttribute="trailing" secondItem="daw-Lw-zvI" secondAttribute="trailing" constant="20" id="VBP-j8-WWD"/>
                         <constraint firstItem="vye-Qx-kYF" firstAttribute="top" secondItem="HPf-yX-E5h" secondAttribute="top" constant="20" id="YOE-rt-bDW"/>
+                        <constraint firstItem="daw-Lw-zvI" firstAttribute="leading" secondItem="HPf-yX-E5h" secondAttribute="leading" constant="20" id="muN-qL-TH4"/>
                         <constraint firstItem="X9T-Al-BiU" firstAttribute="top" secondItem="vye-Qx-kYF" secondAttribute="bottom" constant="20" id="tYa-it-F78"/>
                         <constraint firstItem="daw-Lw-zvI" firstAttribute="top" secondItem="X9T-Al-BiU" secondAttribute="bottom" constant="20" id="y1f-QO-lRr"/>
-                        <constraint firstItem="daw-Lw-zvI" firstAttribute="centerX" secondItem="X9T-Al-BiU" secondAttribute="centerX" id="z7f-nJ-Xh0"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="topColor">

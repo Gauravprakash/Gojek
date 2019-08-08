@@ -2,8 +2,8 @@
 //  Theme.swift
 //  Gojek Demo
 //
-//  Created by Hemant Singh on 07/08/19.
-//  Copyright © 2019 Hemant. All rights reserved.
+//  Created by Gaurav Prakash on 07/08/19.
+//  Copyright © 2019 Gaurav. All rights reserved.
 //
 
 import Foundation
