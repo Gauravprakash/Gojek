@@ -21,7 +21,6 @@ class ContactDetailViewModel : NSObject{
       init(model contact: Contact) {
         self.contact = contact
     }
-    
 }
 
 struct ContactData {
@@ -33,14 +32,13 @@ struct ContactData {
     
     init(){}
     
-    init(contact:Contact) {
+    init(contact:Contact){
         self.firstname = contact.firstName
         self.lastname = contact.lastName
         self.mobile = contact.phoneNumber
         self.email = contact.emailId
         self.isFavourite = contact.favorite
-    }
-    
+       }
     func validateData() -> (Bool, String){
         if firstname == nil  {
             return(false, "please enter first name")

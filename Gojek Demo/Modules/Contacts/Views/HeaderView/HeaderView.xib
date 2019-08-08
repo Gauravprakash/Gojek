@@ -105,7 +105,7 @@
                 <outlet property="imgView" destination="vye-Qx-kYF" id="JeO-hC-il8"/>
                 <outlet property="userName" destination="X9T-Al-BiU" id="Nse-bo-R73"/>
             </connections>
-            <point key="canvasLocation" x="-313.04347826086956" y="-144.30803571428569"/>
+            <point key="canvasLocation" x="574" y="-356"/>
         </view>
     </objects>
     <resources>

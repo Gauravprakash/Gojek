@@ -27,6 +27,7 @@
 		54928A1D22F7FD8400FADDAC /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54928A1722F7FD8400FADDAC /* StringExtension.swift */; };
 		54928A1E22F7FD8400FADDAC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54928A1922F7FD8400FADDAC /* API.swift */; };
 		54928A1F22F7FD8400FADDAC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54928A1B22F7FD8400FADDAC /* Router.swift */; };
+		54B41C4822FCAB420026ABAB /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = 54B41C4722FCAB420026ABAB /* contacts.json */; };
 		54EC44B822F962FC00C042C0 /* ContactDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC44B722F962FC00C042C0 /* ContactDetailViewModel.swift */; };
 		54FB9F6D22F80D6F0073DC5E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB9F6C22F80D6F0073DC5E /* Contact.swift */; };
 		54FB9F7022F80F810073DC5E /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB9F6F22F80F810073DC5E /* ContactListViewController.swift */; };
@@ -87,6 +88,7 @@
 		54928A1722F7FD8400FADDAC /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		54928A1922F7FD8400FADDAC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		54928A1B22F7FD8400FADDAC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		54B41C4722FCAB420026ABAB /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		54EC44B722F962FC00C042C0 /* ContactDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModel.swift; sourceTree = "<group>"; };
 		54FB9F6C22F80D6F0073DC5E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		54FB9F6F22F80F810073DC5E /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		549289FB22F7FC0D00FADDAC /* Gojek DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				54B41C4522FCAB420026ABAB /* Stubs */,
 				549289FC22F7FC0D00FADDAC /* Gojek_DemoTests.swift */,
 				549289FE22F7FC0D00FADDAC /* Info.plist */,
 			);
@@ -285,6 +288,22 @@
 				549289F022F7FC0D00FADDAC /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		54B41C4522FCAB420026ABAB /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				54B41C4622FCAB420026ABAB /* GETCONTACTS */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		54B41C4622FCAB420026ABAB /* GETCONTACTS */ = {
+			isa = PBXGroup;
+			children = (
+				54B41C4722FCAB420026ABAB /* contacts.json */,
+			);
+			path = GETCONTACTS;
 			sourceTree = "<group>";
 		};
 		54FB9F6A22F80D350073DC5E /* Contacts */ = {
@@ -465,6 +484,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B41C4822FCAB420026ABAB /* contacts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

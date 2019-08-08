@@ -1,9 +1,9 @@
 //
 //  StringExtension.swift
-//  Delivery
+//  Gojek Demo
 //
-//  Created by Hemant Singh on 26/07/19.
-//  Copyright © 2019 Hemant Singh. All rights reserved.
+//  Created by Gaurav Prakash on 07/08/19.
+//  Copyright © 2019 Gaurav. All rights reserved.
 //
 
 import UIKit
