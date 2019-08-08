@@ -42,6 +42,8 @@ class HeaderView: UIView {
         case 100:
             sender.isSelected = !sender.isSelected
             callback(sender.tag, sender.isSelected)
+        case 97,98,99:
+            callback(sender.tag, false)
         default:
             break
         }

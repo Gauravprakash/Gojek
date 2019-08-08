@@ -44,6 +44,7 @@ class ContactCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
+        self.backgroundColor = Color.cellBackground
         self.addSubview(nameLabel)
         self.addSubview(nameImageView)
         self.addSubview(favImageView)

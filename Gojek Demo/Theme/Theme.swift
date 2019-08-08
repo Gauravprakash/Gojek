@@ -14,4 +14,5 @@ struct Theme{
 
 struct Color {
     static let buttonColor = UIColor(red: 111/255, green: 228/255, blue: 255/255, alpha: 1.0)
+    static let cellBackground = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
 }

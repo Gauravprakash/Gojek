@@ -16,6 +16,7 @@
 		5474886D22FB6605007B90AE /* EditFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474886B22FB6605007B90AE /* EditFieldCell.swift */; };
 		5474886E22FB6605007B90AE /* EditFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5474886C22FB6605007B90AE /* EditFieldCell.xib */; };
 		547D213C22FAADA400E5CDD1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547D213B22FAADA400E5CDD1 /* Theme.swift */; };
+		547DC91522FC4DF700A9BB2C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547DC91422FC4DF600A9BB2C /* GradientView.swift */; };
 		549289E322F7FC0600FADDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549289E222F7FC0600FADDAC /* AppDelegate.swift */; };
 		549289ED22F7FC0600FADDAC /* Gojek_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549289EB22F7FC0600FADDAC /* Gojek_Demo.xcdatamodeld */; };
 		549289EF22F7FC0D00FADDAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 549289EE22F7FC0D00FADDAC /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		5474886B22FB6605007B90AE /* EditFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCell.swift; sourceTree = "<group>"; };
 		5474886C22FB6605007B90AE /* EditFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldCell.xib; sourceTree = "<group>"; };
 		547D213B22FAADA400E5CDD1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		547DC91422FC4DF600A9BB2C /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		549289DF22F7FC0600FADDAC /* Gojek Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gojek Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		549289E222F7FC0600FADDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		549289EC22F7FC0600FADDAC /* Gojek_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gojek_Demo.xcdatamodel; sourceTree = "<group>"; };
@@ -164,8 +166,6 @@
 			children = (
 				5474886522FB6235007B90AE /* ContactPlaceholder.xib */,
 				5474886722FB638E007B90AE /* ContactPlaceholder.swift */,
-				5474886B22FB6605007B90AE /* EditFieldCell.swift */,
-				5474886C22FB6605007B90AE /* EditFieldCell.xib */,
 			);
 			path = NewContact;
 			sourceTree = "<group>";
@@ -176,6 +176,15 @@
 				547D213B22FAADA400E5CDD1 /* Theme.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		547DC91622FC523400A9BB2C /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5474886922FB65A2007B90AE /* TVTextField.swift */,
+				547DC91422FC4DF600A9BB2C /* GradientView.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		549289D622F7FC0600FADDAC = {
@@ -298,7 +307,7 @@
 		54FB9F6E22F80E830073DC5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5474886922FB65A2007B90AE /* TVTextField.swift */,
+				547DC91622FC523400A9BB2C /* Custom Views */,
 				5474886422FB620B007B90AE /* NewContact */,
 				544E822222FAFEEF00731E08 /* HeaderView */,
 				54FB9F7722F810B40073DC5E /* Cells */,
@@ -312,6 +321,8 @@
 		54FB9F7722F810B40073DC5E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5474886B22FB6605007B90AE /* EditFieldCell.swift */,
+				5474886C22FB6605007B90AE /* EditFieldCell.xib */,
 				54FB9F7522F810AA0073DC5E /* ContactCell.swift */,
 			);
 			path = Cells;
@@ -559,6 +570,7 @@
 			files = (
 				54FB9F7F22F814C90073DC5E /* ContactListViewModel.swift in Sources */,
 				54FB9F6D22F80D6F0073DC5E /* Contact.swift in Sources */,
+				547DC91522FC4DF700A9BB2C /* GradientView.swift in Sources */,
 				5474886D22FB6605007B90AE /* EditFieldCell.swift in Sources */,
 				54EC44B822F962FC00C042C0 /* ContactDetailViewModel.swift in Sources */,
 				54FB9F7022F80F810073DC5E /* ContactListViewController.swift in Sources */,

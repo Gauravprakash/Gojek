@@ -80,7 +80,6 @@ class ContactListViewController: UIViewController {
     @objc private func addContact(){
        self.router.route(to: Route.editContact.rawValue, from: self, parameters: nil)
     }
-    
 }
 
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -91,7 +90,6 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         return viewModel.contactDictionary[viewModel.keys[section]]?.count ?? 0
 
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if  let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.reuseIdentifier, for: indexPath)
             as? ContactCell {

@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import Moya
+import MessageUI
+
 
 class ContactDetailViewController: UIViewController {
    var viewModel:ContactDetailViewModel?
@@ -83,6 +85,46 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
                 switch tag {
                 case 100:
                     self?.viewModel?.contact.favorite = value
+                case 97:
+                    if (MFMessageComposeViewController.canSendText()) {
+                        let controller = MFMessageComposeViewController()
+                        controller.body = "Message Body"
+                        if let phone = self?.viewModel?.contact.phoneNumber{
+                            controller.recipients = [phone]
+                            controller.messageComposeDelegate = self
+                            self?.present(controller, animated: true, completion: nil)
+                        }else{
+                            self?.view.makeToast("Number not found for this contact")
+                        }
+                        
+                    }else{
+                        self?.view.makeToast("Can't send message from this device")
+                    }
+                case 98:
+                    if let url = URL(string: "tel://\(self?.viewModel?.contact.phoneNumber ?? "")"),UIApplication.shared.canOpenURL(url) {
+                        if #available(iOS 10, *) {
+                            UIApplication.shared.open(url, options: [:], completionHandler:nil)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                        }
+                    } else {
+                        self?.view.makeToast("Can't make call from this device")
+                    }
+                case 99:
+                    if MFMailComposeViewController.canSendMail() {
+                        let mail = MFMailComposeViewController()
+                        mail.mailComposeDelegate = self
+                        if let email = self?.viewModel?.contact.emailId{
+                            mail.setToRecipients(["\(email)"])
+                            mail.setMessageBody("<p>This one is testing for Gojek !</p>", isHTML: true)
+                            self?.present(mail, animated: true, completion: nil)
+                        }else{
+                          self?.view.makeToast("Email not found for this contact")
+                        }
+                       
+                    } else {
+                        self?.view.makeToast("Can't send email from this device")
+                    }
                 default:
                     break
                 }
@@ -95,7 +137,7 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
      }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (section == 0) ? 400 :  0
+        return (section == 0) ? 380 :  0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -108,6 +150,7 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -117,9 +160,9 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
 
             switch indexPath.row {
             case 0:
-                cell.textLabel?.text = "mobile \(viewModel?.contact.phoneNumber ?? "")"
+                cell.textLabel?.text = "mobile   \(viewModel?.contact.phoneNumber ?? "")"
             case 1:
-                cell.textLabel?.text = "email \(viewModel?.contact.emailId ?? "" )"
+                cell.textLabel?.text = "email     \(viewModel?.contact.emailId ?? "" )"
             default:
                 break
             }
@@ -141,4 +184,25 @@ extension ContactDetailViewController: ChangeContactDelegate{
         }
 }
     
+}
+
+extension ContactDetailViewController: MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate{
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch (result) {
+        case .cancelled:
+            print("Message was cancelled")
+            dismiss(animated: true, completion: nil)
+        case .failed:
+            print("Message failed")
+            dismiss(animated: true, completion: nil)
+        case .sent:
+            print("Message was sent")
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
 }
