@@ -8,11 +8,14 @@
 
 import UIKit
 import SnapKit
+import Moya
 
 class ContactDetailViewController: UIViewController {
    var viewModel:ContactDetailViewModel?
-    
-   lazy var contactTableView: UITableView = {
+   var router = ContactListRouter()
+   var apiProvider: MoyaProvider<API> = APIProvider
+   var sourceModel = ContactListViewModel()
+    lazy var contactTableView: UITableView = {
         let table = UITableView(frame: self.view.frame, style: .plain)
         table.estimatedRowHeight = 100
         table.dataSource = self
@@ -31,8 +34,41 @@ class ContactDetailViewController: UIViewController {
             make.height.equalTo(self.view)
             make.center.equalTo(self.view)
         }
+        let editItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit, target: self, action: #selector(self.navigateView))
+        editItem.tintColor = Color.buttonColor
+        self.navigationItem.rightBarButtonItem = editItem
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hitRequest()
+    }
+    
+    func hitRequest(){
+        if let model = viewModel?.contact{
+            let data = ContactData(contact: model)
+            let jsonData = try? JSONSerialization.data(withJSONObject: data.toDictionary(), options: [])
+            let jsonString = String(data: jsonData!, encoding: .utf8)
+            let jsonObject = (jsonString?.data(using: .utf8))! as Data
+            if let id = model.id{
+                let jsonQuery = (id, jsonObject)
+                apiProvider.request(API.UPDATECONTACT(jsonQuery)) { [weak self] (result) in
+                    switch result {
+                    case .success:
+                        print("success")
+                    case .failure(let error):
+                        self?.view.makeToast("\(error.localizedDescription)")
+                    }
+                }
+                
+            }
+        }
+    
+    }
+    
+    @objc private func navigateView(){
+        self.router.route(to: ContactListViewController.Route.editContact.rawValue,from: self, parameters: viewModel?.contact)
+    }
 }
 
 extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegate{
@@ -43,6 +79,15 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
             if let contact = viewModel?.contact{
                 header.bindData(contact:contact)
             }
+            header.callback = { [weak self] (tag, value) in
+                switch tag {
+                case 100:
+                    self?.viewModel?.contact.favorite = value
+                default:
+                    break
+                }
+                
+            }
              return header
         default:
             return UIView()
@@ -50,7 +95,7 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
      }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return ( section == 0) ? 400 :  0
+        return (section == 0) ? 400 :  0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,6 +127,18 @@ extension ContactDetailViewController: UITableViewDataSource, UITableViewDelegat
             break
         }
     }
-    
+}
+
+extension ContactDetailViewController: ChangeContactDelegate{
+    func changeContactModel(contact: Contact) {
+        if let id = self.viewModel?.contact.id{
+            self.sourceModel.loadContactDetail(id: id) { (contact) in
+                if let response = contact{
+                    self.viewModel?.contact = response
+                }
+                self.contactTableView.reloadData()
+            }
+        }
+}
     
 }

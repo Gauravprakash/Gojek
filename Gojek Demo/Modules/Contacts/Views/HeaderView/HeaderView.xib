@@ -78,6 +78,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="favButton" destination="uXl-b4-vPQ" id="Bg3-vB-gdP"/>
                 <outlet property="imgView" destination="vye-Qx-kYF" id="JeO-hC-il8"/>
                 <outlet property="userName" destination="X9T-Al-BiU" id="Nse-bo-R73"/>
             </connections>

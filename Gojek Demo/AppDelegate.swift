@@ -8,12 +8,15 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    IQKeyboardManager.shared.enable = true
+    
         // Override point for customization after application launch.
     window = UIWindow(frame: UIScreen.main.bounds)
     let contactListViewController = ContactListViewController()

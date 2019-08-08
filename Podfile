@@ -16,6 +16,8 @@ target 'Gojek Demo' do
   pod 'Firebase/Core', '~> 6.0'
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.13.2'
+  pod 'Material'
+  pod 'IQKeyboardManagerSwift'
 
   target 'Gojek DemoTests' do
     inherit! :search_paths

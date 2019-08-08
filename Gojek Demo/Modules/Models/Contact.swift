@@ -14,7 +14,7 @@ struct Contact: Codable {
     let id: Int?
     let firstName, lastName: String?
     let profilePic: String?
-    let favorite: Bool?
+    var favorite: Bool?
     let phoneNumber:String?
     let emailId:String?
     let url: String?

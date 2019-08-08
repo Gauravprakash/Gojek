@@ -46,9 +46,9 @@ let APIProvider = MoyaProvider<API>(manager: manager, plugins: plugins())
 
 public enum API {
     case GETCONTACTS
-    case NEWCONTACT([String:Any])
+    case NEWCONTACT(Data)
     case CONTACTDETAILS(Int)
-    case UPDATECONTACT([String:Any])
+    case UPDATECONTACT((Int, Data))
     case DELETECONTACT(Int)
 }
 
@@ -58,31 +58,35 @@ extension API: TargetType {
         case .GETCONTACTS:
             return .requestPlain
         case .NEWCONTACT(let params):
-            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            return .requestData(params)
         case .CONTACTDETAILS:
             return .requestPlain
         case .UPDATECONTACT(let params):
-             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+             return .requestData(params.1)
         case .DELETECONTACT:
             return .requestPlain
         }
     }
 
     public var headers: [String: String]? {
-        return [:]
+        switch self {
+        case .NEWCONTACT,.UPDATECONTACT:
+            return ["Content-Type":"application/json"]
+        default:
+            return [:]
+        }
+        
     }
     public var baseURL: URL { return URL(string: "https://gojek-contacts-app.herokuapp.com/")! }
 
     public var path: String {
         switch self {
-        case .GETCONTACTS:
-            return "contacts.json"
-        case .NEWCONTACT:
+        case .GETCONTACTS,.NEWCONTACT:
             return "contacts.json"
         case .CONTACTDETAILS(let id):
             return "contacts/\(id).json"
         case .UPDATECONTACT(let params):
-            return "contacts/\(params["id"] as? Int ?? 0).json"
+            return "contacts/\(params.0).json"
         case .DELETECONTACT(let id):
             return "contacts/\(id).json"
         }
@@ -111,8 +115,14 @@ extension API: TargetType {
         }
     }
     public var sampleData: Data {
-        return Data()
+        switch self {
+        case .NEWCONTACT:
+                return "{\"GrouperId\":\"1\",\"Role\":\"C\",\"Email\":\"sharma@gmail.com\"}".data(using: String.Encoding.utf8)!
+        default :
+        return "{}".data(using: String.Encoding.utf8)!
+            
     }
+}
 }
 
 public func url(_ route: TargetType) -> String {

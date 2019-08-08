@@ -32,6 +32,18 @@ struct ContactListRouter: Router {
             let deliveryDetailsVM = ContactDetailViewModel(model: contact)
             destinationVC.viewModel = deliveryDetailsVM
             context.navigationController?.pushViewController(destinationVC, animated: true)
+            
+        case .editContact:
+            let destinationVC = EditContactViewController()
+            destinationVC.model = parameters as? Contact
+            if let _ = parameters as? Contact{
+              destinationVC.delegate = (context as? ContactDetailViewController)
+              destinationVC.manager = ViewManager.EditContact
+            }
+            else{
+                destinationVC.manager = ViewManager.NewContact
+            }
+            context.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
 }

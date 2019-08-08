@@ -11,12 +11,14 @@ import Toast_Swift
 import DZNEmptyDataSet
 
 
+
 class ContactListViewController: UIViewController {
     
     enum Route: String {
         case contactDetails
+        case editContact
     }
-    
+
     lazy var contactTableView: UITableView = {
         let table = UITableView(frame: self.view.frame, style: .plain)
         table.estimatedRowHeight = 100
@@ -36,7 +38,7 @@ class ContactListViewController: UIViewController {
     override func loadView() {
         super.loadView()
         let groupItem = UIBarButtonItem(title: "Groups", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: nil)
+        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.addContact))
         [groupItem, addItem].forEach {(
             $0.tintColor = Color.buttonColor
         )}
@@ -44,11 +46,9 @@ class ContactListViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = groupItem
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Contacts Found"
+        self.title = "Contacts"
 
        self.view.addSubview(contactTableView)
         contactTableView.snp.makeConstraints { (make) -> Void in
@@ -56,6 +56,11 @@ class ContactListViewController: UIViewController {
             make.height.equalTo(self.view)
             make.center.equalTo(self.view)
         }
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupBindings()
         if viewModel.contactArray.count == 0 {
             viewModel.fetchContacts()
@@ -63,6 +68,7 @@ class ContactListViewController: UIViewController {
     }
     
  func setupBindings(){
+            viewModel.contactArray = []
             viewModel.onError = { [weak self] (error) in
                 self?.view.makeToast(error.localizedDescription)
             }
@@ -70,6 +76,10 @@ class ContactListViewController: UIViewController {
                 self?.contactTableView.reloadData()
             }
         }
+    
+    @objc private func addContact(){
+       self.router.route(to: Route.editContact.rawValue, from: self, parameters: nil)
+    }
     
 }
 
@@ -113,13 +123,23 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
         return viewModel.alphabets
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentSize.height > 0 && scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.height {
-//            if !viewModel.isLoading && !viewModel.isLoadingNextPage && viewModel.hasMore {
-//                viewModel.fetchNextPage()
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                if let contact = viewModel.contactDictionary[viewModel.keys[indexPath.section]]?[indexPath.row], let id = contact.id {
+                    self.viewModel.deleteContact(id: id) { [weak self] (done) in
+                        if done ?? false{
+                            self?.viewModel.contactArray = []
+                            self?.viewDidLoad()
+                        }
+                    }
+                }
+
+            } else if editingStyle == .insert {
+                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            }
+        
+    }
+
 }
 
 

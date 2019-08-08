@@ -10,6 +10,11 @@
 		398B6FFCF33EF821F8ABD75B /* Pods_Gojek_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D748717FB38AD040781DD78A /* Pods_Gojek_DemoUITests.framework */; };
 		544E822122FAFCFE00731E08 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 544E822022FAFCFE00731E08 /* HeaderView.xib */; };
 		544E822622FB00F400731E08 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E822522FB00F400731E08 /* HeaderView.swift */; };
+		5474886622FB6235007B90AE /* ContactPlaceholder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5474886522FB6235007B90AE /* ContactPlaceholder.xib */; };
+		5474886822FB638E007B90AE /* ContactPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474886722FB638E007B90AE /* ContactPlaceholder.swift */; };
+		5474886A22FB65A2007B90AE /* TVTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474886922FB65A2007B90AE /* TVTextField.swift */; };
+		5474886D22FB6605007B90AE /* EditFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5474886B22FB6605007B90AE /* EditFieldCell.swift */; };
+		5474886E22FB6605007B90AE /* EditFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5474886C22FB6605007B90AE /* EditFieldCell.xib */; };
 		547D213C22FAADA400E5CDD1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547D213B22FAADA400E5CDD1 /* Theme.swift */; };
 		549289E322F7FC0600FADDAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549289E222F7FC0600FADDAC /* AppDelegate.swift */; };
 		549289ED22F7FC0600FADDAC /* Gojek_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549289EB22F7FC0600FADDAC /* Gojek_Demo.xcdatamodeld */; };
@@ -58,6 +63,11 @@
 		31FF8018F891F25B1F5EB678 /* Pods-Gojek DemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gojek DemoUITests.release.xcconfig"; path = "Target Support Files/Pods-Gojek DemoUITests/Pods-Gojek DemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		544E822022FAFCFE00731E08 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		544E822522FB00F400731E08 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		5474886522FB6235007B90AE /* ContactPlaceholder.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactPlaceholder.xib; sourceTree = "<group>"; };
+		5474886722FB638E007B90AE /* ContactPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPlaceholder.swift; sourceTree = "<group>"; };
+		5474886922FB65A2007B90AE /* TVTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVTextField.swift; sourceTree = "<group>"; };
+		5474886B22FB6605007B90AE /* EditFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFieldCell.swift; sourceTree = "<group>"; };
+		5474886C22FB6605007B90AE /* EditFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditFieldCell.xib; sourceTree = "<group>"; };
 		547D213B22FAADA400E5CDD1 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		549289DF22F7FC0600FADDAC /* Gojek Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gojek Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		549289E222F7FC0600FADDAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +157,17 @@
 				544E822522FB00F400731E08 /* HeaderView.swift */,
 			);
 			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		5474886422FB620B007B90AE /* NewContact */ = {
+			isa = PBXGroup;
+			children = (
+				5474886522FB6235007B90AE /* ContactPlaceholder.xib */,
+				5474886722FB638E007B90AE /* ContactPlaceholder.swift */,
+				5474886B22FB6605007B90AE /* EditFieldCell.swift */,
+				5474886C22FB6605007B90AE /* EditFieldCell.xib */,
+			);
+			path = NewContact;
 			sourceTree = "<group>";
 		};
 		547D213A22FAAD9000E5CDD1 /* Theme */ = {
@@ -277,6 +298,8 @@
 		54FB9F6E22F80E830073DC5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5474886922FB65A2007B90AE /* TVTextField.swift */,
+				5474886422FB620B007B90AE /* NewContact */,
 				544E822222FAFEEF00731E08 /* HeaderView */,
 				54FB9F7722F810B40073DC5E /* Cells */,
 				54FB9F6F22F80F810073DC5E /* ContactListViewController.swift */,
@@ -421,6 +444,8 @@
 			files = (
 				544E822122FAFCFE00731E08 /* HeaderView.xib in Resources */,
 				549289F222F7FC0D00FADDAC /* LaunchScreen.storyboard in Resources */,
+				5474886622FB6235007B90AE /* ContactPlaceholder.xib in Resources */,
+				5474886E22FB6605007B90AE /* EditFieldCell.xib in Resources */,
 				549289EF22F7FC0D00FADDAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +559,7 @@
 			files = (
 				54FB9F7F22F814C90073DC5E /* ContactListViewModel.swift in Sources */,
 				54FB9F6D22F80D6F0073DC5E /* Contact.swift in Sources */,
+				5474886D22FB6605007B90AE /* EditFieldCell.swift in Sources */,
 				54EC44B822F962FC00C042C0 /* ContactDetailViewModel.swift in Sources */,
 				54FB9F7022F80F810073DC5E /* ContactListViewController.swift in Sources */,
 				54928A1F22F7FD8400FADDAC /* Router.swift in Sources */,
@@ -541,6 +567,7 @@
 				54FB9F7B22F813B10073DC5E /* AppStrings.swift in Sources */,
 				54928A1C22F7FD8400FADDAC /* CollectionExtension.swift in Sources */,
 				54928A1D22F7FD8400FADDAC /* StringExtension.swift in Sources */,
+				5474886A22FB65A2007B90AE /* TVTextField.swift in Sources */,
 				549289E322F7FC0600FADDAC /* AppDelegate.swift in Sources */,
 				54FB9F7222F80FB80073DC5E /* ContactDetailViewController.swift in Sources */,
 				549289ED22F7FC0600FADDAC /* Gojek_Demo.xcdatamodeld in Sources */,
@@ -548,6 +575,7 @@
 				54928A1E22F7FD8400FADDAC /* API.swift in Sources */,
 				54FB9F7422F80FE70073DC5E /* EditContactViewController.swift in Sources */,
 				544E822622FB00F400731E08 /* HeaderView.swift in Sources */,
+				5474886822FB638E007B90AE /* ContactPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

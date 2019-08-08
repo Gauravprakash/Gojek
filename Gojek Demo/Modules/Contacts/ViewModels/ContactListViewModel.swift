@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 class ContactListViewModel: NSObject{
+
 var apiProvider: MoyaProvider<API> = APIProvider
 var onError: ((Error) -> Void)?
 var onData: ((Contacts) -> Void)?
@@ -49,6 +50,18 @@ public func fetchContacts() {
                 } catch {
                     self?.onError?(error) }
                 
+            case .failure(let error):
+                self?.onError?(error)
+            }
+        }
+    }
+    
+    public func deleteContact(id:Int, completionHandler: @escaping (Bool?) -> Void){
+        apiProvider.request(API.DELETECONTACT(id)) { [weak self] (result) in
+            switch result {
+            case .success:
+                    completionHandler(true)
+
             case .failure(let error):
                 self?.onError?(error)
             }

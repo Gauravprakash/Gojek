@@ -13,6 +13,16 @@ extension Collection {
     public subscript (safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
+  
+}
+
+extension UITableView {
+    func registerNibs(nibNames nibs: [String]) {
+        for nib in nibs {
+            let cellNib = UINib(nibName: nib, bundle: nil)
+            register(cellNib, forCellReuseIdentifier: nib)
+        }
+    }
 }
 
 
