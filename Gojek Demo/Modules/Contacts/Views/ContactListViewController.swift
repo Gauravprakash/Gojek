@@ -56,19 +56,15 @@ class ContactListViewController: UIViewController {
             make.height.equalTo(self.view)
             make.center.equalTo(self.view)
         }
-       
-    }
+       }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.fetchContacts()
         setupBindings()
-        if viewModel.contactArray.count == 0 {
-            viewModel.fetchContacts()
-        }
     }
     
  func setupBindings(){
-            viewModel.contactArray = []
             viewModel.onError = { [weak self] (error) in
                 self?.view.makeToast(error.localizedDescription)
             }
